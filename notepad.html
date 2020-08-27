@@ -1,0 +1,394 @@
+<html>
+	<head>
+	<textarea style="width:1350px;height: 600px"id="information" ></textarea>
+	<br>
+	<input type="button" id="download.txt" value="Download Txt">
+	<input type="button" id="download.odt" value="Download OpenOffice Writer Document">
+	<input type="button" id="download.rtf" value="Download Rtf">
+	<input type="button" id="download.pdf"value="Download Pdf">
+	<input type="button" id="download.docx"value="Download Docx">
+	<input type="button" id="download.html"value="Download Html">
+	<input type="button" id="download.js"value="Download Js">
+	<input type="button" id="download.py"value="Download Python">
+	<input type="button" id="download.java"value="Download Java">
+	<input type="button" id="download.c"value="Download C">
+	<input type="button" id="download.cpp"value="Download C++">
+	<input type="button" id="download.cs"value="Download C#">
+	<input type="button" id="download.php" value="Download PHP">
+	<input type="button" id="download.exe"value="Download Exe">
+	<input type="file" value="RecallFromFile"id="File">
+	<br>
+	<input type="button" value="Open New Window" onclick="newWindow()">
+	</head>
+	<body>
+		<script>
+			const textBox = document.getElementById("information");
+			const input = document.getElementById("File");
+			
+			input.addEventListener("change", function () {
+			if (this.files && this.files[0]) {
+				var myFile = this.files[0];
+				var reader = new FileReader();
+			
+				reader.addEventListener('load', function (event) {
+				var contents = event.target.result;
+	
+					textBox.value=contents;
+						
+				});
+    
+			reader.readAsText(myFile);
+			}   
+		});
+			
+	// download text file 
+	var filename,text,name;
+	document.getElementById("download.txt").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".txt");
+    
+    downloadtxt(filename, text);
+	}, false);
+	
+	function downloadtxt(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:txt/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download odt file 
+	var filename,text,name;
+	document.getElementById("download.odt").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".odt");
+    
+    downloadodt(filename, text);
+	}, false);
+	
+	function downloadodt(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:odt/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download rtf file  
+	var filename,text,name;
+	document.getElementById("download.rtf").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".rtf");
+    
+    downloadrtf(filename, text);
+	}, false);
+	
+	function downloadrtf(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:rtf/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download pdf file  
+	var filename,text,name;
+	document.getElementById("download.pdf").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".pdf");
+    
+    downloadpdf(filename, text);
+	}, false);
+	
+	function downloadpdf(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:pdf/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	
+	
+	// download word docx
+	var filename,text,name;
+	document.getElementById("download.docx").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".docx");
+    
+    downloaddocx(filename, text);
+	}, false);
+	
+	function downloaddocx(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:docx/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+
+	// download html file 
+	var filename,text,name;
+	document.getElementById("download.html").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".html");
+    
+    downloadhtml(filename, text);
+	}, false);
+	
+	function downloadhtml(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:html/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download javascript file 
+	var filename,text,name;
+	document.getElementById("download.js").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".js");
+    
+    downloadjs(filename, text);
+	}, false);
+	
+	function downloadjs(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:js/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download python file 
+	var filename,text,name;
+	document.getElementById("download.py").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".py");
+    
+    downloadpy(filename, text);
+	}, false);
+	
+	function downloadpy(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:py/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download java file 
+	var filename,text,name;
+	document.getElementById("download.java").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".java");
+    
+    downloadjava(filename, text);
+	}, false);
+	
+	function downloadjava(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:java/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download C file 
+	var filename,text,name;
+	document.getElementById("download.c").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".c");
+    
+    downloadc(filename, text);
+	}, false);
+	
+	function downloadc(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:c/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download c++ file 
+	var filename,text,name;
+	document.getElementById("download.cpp").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".cpp");
+    
+    downloadcpp(filename, text);
+	}, false);
+	
+	function downloadcpp(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:cpp/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download c# file 
+	var filename,text,name;
+	document.getElementById("download.cs").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".cs");
+    
+    downloadcs(filename, text);
+	}, false);
+	
+	function downloadcs(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:cs/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download php file 
+	var filename,text,name;
+	document.getElementById("download.php").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".php");
+    
+    downloadphp(filename, text);
+	}, false);
+	
+	function downloadphp(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:php/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	// download exe file 
+	var filename,text,name;
+	document.getElementById("download.exe").addEventListener("click", function(){
+		
+		text = generate_text();
+		name = prompt("What do you want to name the file?");
+		filename = name.concat(".exe");
+    
+    downloadexe(filename, text);
+	}, false);
+	
+	function downloadexe(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:exe/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	
+	function generate_text(){
+		
+		return textBox.value;
+	
+	}
+	
+	function newWindow(){
+		window.open("file:///E:/Resume%20Projects/Javascript/Applications/notepad.html");
+	}
+			
+		</script>
+	</body>
+</html>
